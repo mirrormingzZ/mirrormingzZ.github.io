@@ -1,0 +1,737 @@
+
+<!DOCTYPE html>
+<html lang="" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hexo</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="mirrorming,"> 
+    
+    <meta name="author" content="mirrorming"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle"></h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title"></h1>
+        <div class="stuff">
+            <span>十二月 05, 2018</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h2 id="Nginx-简介"><a href="#Nginx-简介" class="headerlink" title="Nginx 简介"></a>Nginx 简介</h2><h3 id="什么是-Nginx"><a href="#什么是-Nginx" class="headerlink" title="什么是 Nginx"></a>什么是 Nginx</h3><p>Nginx 是一款高性能的 HTTP 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。由俄罗斯的程序设计师 Igor Sysoev 所开发，官方测试 Nginx 能够支支撑 5 万并发链接，并且 CPU、内存等资源消耗却非常低，运行非常稳定。</p>
+<h3 id="Nginx-的应用场景"><a href="#Nginx-的应用场景" class="headerlink" title="Nginx 的应用场景"></a>Nginx 的应用场景</h3><ul>
+<li>HTTP 服务器：Nginx 是一个 HTTP 服务可以独立提供 HTTP 服务。可以做网页静态服务器。</li>
+<li>虚拟主机：可以实现在一台服务器虚拟出多个网站。例如个人网站使用的虚拟主机。</li>
+<li>反向代理，负载均衡：当网站的访问量达到一定程度后，单台服务器不能满足用户的请求时，需要用多台服务器集群可以使用 Nginx 做反向代理。并且多台服务器可以平均分担负载，不会因为某台服务器负载高宕机而某台服务器闲置的情况。</li>
+</ul>
+<h2 id="Nginx-虚拟主机"><a href="#Nginx-虚拟主机" class="headerlink" title="Nginx 虚拟主机"></a>Nginx 虚拟主机</h2><p>我们使用 Docker 来安装和运行 Nginx，<code>docker-compose.yml</code> 配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3.1&apos;</span><br><span class="line">services:</span><br><span class="line">  nginx:</span><br><span class="line">    restart: always</span><br><span class="line">    image: nginx</span><br><span class="line">    container_name: nginx</span><br><span class="line">    ports:</span><br><span class="line">      - 81:80</span><br><span class="line">    volumes:</span><br><span class="line">      - ./conf/nginx.conf:/etc/nginx/nginx.conf</span><br><span class="line">      - ./wwwroot:/usr/share/nginx/wwwroot</span><br></pre></td></tr></table></figure>
+<h3 id="什么是虚拟主机？"><a href="#什么是虚拟主机？" class="headerlink" title="什么是虚拟主机？"></a>什么是虚拟主机？</h3><p>虚拟主机是一种特殊的软硬件技术，它可以将网络上的每一台计算机分成多个虚拟主机，每个虚拟主机可以独立对外提供 www 服务，这样就可以实现一台主机对外提供多个 web 服务，每个虚拟主机之间是独立的，互不影响的。</p>
+<p>通过 Nginx 可以实现虚拟主机的配置，Nginx 支持三种类型的虚拟主机配置</p>
+<ul>
+<li>基于 IP 的虚拟主机</li>
+<li>基于域名的虚拟主机</li>
+<li>基于端口的虚拟主机</li>
+</ul>
+<h3 id="Nginx-配置文件的结构"><a href="#Nginx-配置文件的结构" class="headerlink" title="Nginx 配置文件的结构"></a>Nginx 配置文件的结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># ...</span><br><span class="line">events &#123;</span><br><span class="line">    # ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    # ...</span><br><span class="line">    server&#123;</span><br><span class="line">        # ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # ...</span><br><span class="line">    server&#123;</span><br><span class="line">        # ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong> 每个 server 就是一个虚拟主机</p>
+<h3 id="基于端口的虚拟主机配置"><a href="#基于端口的虚拟主机配置" class="headerlink" title="基于端口的虚拟主机配置"></a>基于端口的虚拟主机配置</h3><h4 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h4><ul>
+<li>Nginx 对外提供 80 和 8080 两个端口监听服务</li>
+<li>请求 80 端口则请求 html80 目录下的 html</li>
+<li>请求 8080 端口则请求 html8080 目录下的 html</li>
+</ul>
+<h4 id="创建目录及文件"><a href="#创建目录及文件" class="headerlink" title="创建目录及文件"></a>创建目录及文件</h4><p>在 <code>/usr/local/docker/nginx/wwwroot</code> 目录下创建 <code>html80</code> 和 <code>html8080</code> 两个目录，并分辨创建两个 index.html 文件</p>
+<h4 id="配置虚拟主机"><a href="#配置虚拟主机" class="headerlink" title="配置虚拟主机"></a>配置虚拟主机</h4><p>修改 <code>/usr/local/docker/nginx/conf</code> 目录下的 nginx.conf 配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">worker_processes  1;	#cpu内核数	老版本有惊群问题</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;	#每个子线程的连接数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    # 配置虚拟主机 192.168.75.145</span><br><span class="line">    server &#123;</span><br><span class="line">    # 监听的ip和端口，配置 192.168.75.145:80</span><br><span class="line">        listen       80;</span><br><span class="line">    # 虚拟主机名称这里配置ip地址</span><br><span class="line">        server_name  192.168.75.145;</span><br><span class="line">    # 所有的请求都以 / 开始，所有的请求都可以匹配此 location</span><br><span class="line">        location / &#123;</span><br><span class="line">        # 使用 root 指令指定虚拟主机目录即网页存放目录</span><br><span class="line">        # 比如访问 http://ip/index.html 将找到 /usr/local/docker/nginx/wwwroot/html80/index.html</span><br><span class="line">        # 比如访问 http://ip/item/index.html 将找到 /usr/local/docker/nginx/wwwroot/html80/item/index.html</span><br><span class="line"></span><br><span class="line">            root   /usr/share/nginx/wwwroot/html80;</span><br><span class="line">        # 指定欢迎页面，按从左到右顺序查找</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    # 配置虚拟主机 192.168.75.245</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       8080;</span><br><span class="line">        server_name  192.168.75.145;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /usr/share/nginx/wwwroot/html8080;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="基于域名的虚拟主机配置"><a href="#基于域名的虚拟主机配置" class="headerlink" title="基于域名的虚拟主机配置"></a>基于域名的虚拟主机配置</h3><h4 id="需求-1"><a href="#需求-1" class="headerlink" title="需求"></a>需求</h4><ul>
+<li>两个域名指向同一台 Nginx 服务器，用户访问不同的域名显示不同的网页内容</li>
+<li>两个域名是 admin.service.itoken.funtl.com 和 admin.web.itoken.funtl.com</li>
+<li>Nginx 服务器使用虚拟机 192.168.75.145</li>
+</ul>
+<h4 id="配置-Windows-Hosts-文件"><a href="#配置-Windows-Hosts-文件" class="headerlink" title="配置 Windows Hosts 文件"></a>配置 Windows Hosts 文件</h4><ul>
+<li>通过 host 文件指定 admin.service.itoken.funtl.com 和 admin.web.itoken.funtl.com 对应 192.168.75.145 虚拟机：</li>
+<li>修改 window 的 hosts 文件：（C:\Windows\System32\drivers\etc）</li>
+</ul>
+<h4 id="创建目录及文件-1"><a href="#创建目录及文件-1" class="headerlink" title="创建目录及文件"></a>创建目录及文件</h4><p>在 <code>/usr/local/docker/nginx/wwwroot</code> 目录下创建 <code>htmlservice</code> 和 <code>htmlweb</code> 两个目录，并分辨创建两个 index.html 文件</p>
+<h4 id="配置虚拟主机-1"><a href="#配置虚拟主机-1" class="headerlink" title="配置虚拟主机"></a>配置虚拟主机</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">user  nginx;</span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  admin.service.itoken.funtl.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /usr/share/nginx/wwwroot/htmlservice;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  admin.web.itoken.funtl.com;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /usr/share/nginx/wwwroot/htmlweb;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Nginx-反向代理"><a href="#Nginx-反向代理" class="headerlink" title="Nginx 反向代理"></a>Nginx 反向代理</h2><h3 id="什么是代理服务器？"><a href="#什么是代理服务器？" class="headerlink" title="什么是代理服务器？"></a>什么是代理服务器？</h3><p>代理服务器，客户机在发送请求时，不会直接发送给目的主机，而是先发送给代理服务器，代理服务接受客户机请求之后，再向主机发出，并接收目的主机返回的数据，存放在代理服务器的硬盘中，再发送给客户机。</p>
+<h3 id="为什么要使用代理服务器？"><a href="#为什么要使用代理服务器？" class="headerlink" title="为什么要使用代理服务器？"></a>为什么要使用代理服务器？</h3><h4 id="提高访问速度"><a href="#提高访问速度" class="headerlink" title="提高访问速度"></a>提高访问速度</h4><p>由于目标主机返回的数据会存放在代理服务器的硬盘中，因此下一次客户再访问相同的站点数据时，会直接从代理服务器的硬盘中读取，起到了缓存的作用，尤其对于热门站点能明显提高请求速度。</p>
+<h4 id="防火墙作用"><a href="#防火墙作用" class="headerlink" title="防火墙作用"></a>防火墙作用</h4><p>由于所有的客户机请求都必须通过代理服务器访问远程站点，因此可在代理服务器上设限，过滤某些不安全信息。</p>
+<h4 id="通过代理服务器访问不能访问的目标站点"><a href="#通过代理服务器访问不能访问的目标站点" class="headerlink" title="通过代理服务器访问不能访问的目标站点"></a>通过代理服务器访问不能访问的目标站点</h4><p>互联网上有许多开放的代理服务器，客户机在访问受限时，可通过不受限的代理服务器访问目标站点，通俗说，我们使用的翻墙浏览器就是利用了代理服务器，虽然不能出国，但也可直接访问外网。</p>
+<h3 id="什么是正向代理？"><a href="#什么是正向代理？" class="headerlink" title="什么是正向代理？"></a>什么是正向代理？</h3><p>正向代理，架设在客户机与目标主机之间，只用于代理内部网络对 Internet 的连接请求，客户机必须指定代理服务器,并将本来要直接发送到 Web 服务器上的 Http 请求发送到代理服务器中。</p>
+<h3 id="什么是反向代理？"><a href="#什么是反向代理？" class="headerlink" title="什么是反向代理？"></a>什么是反向代理？</h3><p>反向代理服务器架设在服务器端，通过缓冲经常被请求的页面来缓解服务器的工作量，将客户机请求转发给内部网络上的目标服务器；并将从服务器上得到的结果返回给 Internet 上请求连接的客户端，此时代理服务器与目标主机一起对外表现为一个服务器。</p>
+<h3 id="反向代理有哪些主要应用？"><a href="#反向代理有哪些主要应用？" class="headerlink" title="反向代理有哪些主要应用？"></a>反向代理有哪些主要应用？</h3><p>现在许多大型 web 网站都用到反向代理。除了可以防止外网对内网服务器的恶性攻击、缓存以减少服务器的压力和访问安全控制之外，还可以进行负载均衡，将用户请求分配给多个服务器。</p>
+<h3 id="使用-Nginx-反向代理-Tomcat"><a href="#使用-Nginx-反向代理-Tomcat" class="headerlink" title="使用 Nginx 反向代理 Tomcat"></a>使用 Nginx 反向代理 Tomcat</h3><h4 id="需求-2"><a href="#需求-2" class="headerlink" title="需求"></a>需求</h4><ul>
+<li>两个 tomcat 服务通过 nginx 反向代理</li>
+<li>nginx 服务器：192.168.75.145:80</li>
+<li>tomcat1 服务器：192.168.75.145:9090</li>
+<li>tomcat2 服务器：192.168.75.145:9091</li>
+</ul>
+<h4 id="启动-Tomcat-容器"><a href="#启动-Tomcat-容器" class="headerlink" title="启动 Tomcat 容器"></a>启动 Tomcat 容器</h4><p>启动两个 Tomcat 容器，映射端口为 9090 和 9091，docker-compose.yml 如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3&apos;</span><br><span class="line">services:</span><br><span class="line">  tomcat1:</span><br><span class="line">    image: tomcat</span><br><span class="line">    container_name: tomcat1</span><br><span class="line">    ports:</span><br><span class="line">      - 9090:8080</span><br><span class="line"></span><br><span class="line">  tomcat2:</span><br><span class="line">    image: tomcat</span><br><span class="line">    container_name: tomcat2</span><br><span class="line">    ports:</span><br><span class="line">      - 9091:8080</span><br></pre></td></tr></table></figure>
+<h4 id="配置-Nginx-反向代理"><a href="#配置-Nginx-反向代理" class="headerlink" title="配置 Nginx 反向代理"></a>配置 Nginx 反向代理</h4><p>修改 <code>/usr/local/docker/nginx/conf</code> 目录下的 nginx.conf 配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">user  nginx;</span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    # 配置一个代理即 tomcat1 服务器</span><br><span class="line">    upstream tomcat_server1 &#123;</span><br><span class="line">        server 192.168.75.145:9090;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # 配置一个代理即 tomcat2 服务器</span><br><span class="line">    upstream tomcat_server2 &#123;</span><br><span class="line">        server 192.168.75.145:9091;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # 配置一个虚拟主机</span><br><span class="line">    server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name admin.service.itoken.funtl.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">                # 域名 admin.service.itoken.funtl.com 的请求全部转发到 tomcat_server1 即 tomcat1 服务上</span><br><span class="line">                proxy_pass http://tomcat_server1;</span><br><span class="line">                # 欢迎页面，按照从左到右的顺序查找页面</span><br><span class="line">                index index.jsp index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name admin.web.itoken.funtl.com;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            # 域名 admin.web.itoken.funtl.com 的请求全部转发到 tomcat_server2 即 tomcat2 服务上</span><br><span class="line">            proxy_pass http://tomcat_server2;</span><br><span class="line">            index index.jsp index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Nginx-负载均衡"><a href="#Nginx-负载均衡" class="headerlink" title="Nginx 负载均衡"></a>Nginx 负载均衡</h2><h3 id="什么是负载均衡"><a href="#什么是负载均衡" class="headerlink" title="什么是负载均衡"></a>什么是负载均衡</h3><p>负载均衡建立在现有网络结构之上，它提供了一种廉价有效透明的方法扩展网络设备和服务器的带宽、增加吞吐量、加强网络数据处理能力、提高网络的灵活性和可用性。</p>
+<p>负载均衡，英文名称为 Load Balance，其意思就是分摊到多个操作单元上进行执行，例如 Web 服务器、FTP 服务器、企业关键应用服务器和其它关键任务服务器等，从而共同完成工作任务。</p>
+<h3 id="Nginx-实现负载均衡"><a href="#Nginx-实现负载均衡" class="headerlink" title="Nginx 实现负载均衡"></a>Nginx 实现负载均衡</h3><ul>
+<li>nginx 作为负载均衡服务器，用户请求先到达 nginx，再由 nginx 根据负载配置将请求转发至 tomcat 服务器</li>
+<li>nginx 负载均衡服务器：192.168.75.145:80</li>
+<li>tomcat1 服务器：192.168.75.145:9090</li>
+<li>tomcat2 服务器：192.168.75.145:9091</li>
+</ul>
+<h4 id="Nginx-配置负载均衡"><a href="#Nginx-配置负载均衡" class="headerlink" title="Nginx 配置负载均衡"></a>Nginx 配置负载均衡</h4><p>修改 <code>/usr/local/docker/nginx/conf</code> 目录下的 nginx.conf 配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">user  nginx;</span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    upstream myapp1 &#123;</span><br><span class="line">        server 192.168.75.145:9090 weight=10;</span><br><span class="line">        server 192.168.75.145:9091 weight=10;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name nginx.funtl.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://myapp1;</span><br><span class="line">            index index.jsp index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="相关配置说明"><a href="#相关配置说明" class="headerlink" title="相关配置说明"></a>相关配置说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 定义负载均衡设备的 Ip及设备状态 </span><br><span class="line">upstream myServer &#123;</span><br><span class="line">    server 127.0.0.1:9090 down;</span><br><span class="line">    server 127.0.0.1:8080 weight=2;</span><br><span class="line">    server 127.0.0.1:6060;</span><br><span class="line">    server 127.0.0.1:7070 backup;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在需要使用负载的 Server 节点下添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxy_pass http://myServer;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>upstream</code>：每个设备的状态:</li>
+<li><code>down</code>：表示当前的 <code>server</code> 暂时不参与负载</li>
+<li><code>weight</code>：默认为 1 <code>weight</code> 越大，负载的权重就越大。</li>
+<li><code>max_fails</code>：允许请求失败的次数默认为 1 当超过最大次数时，返回 <code>proxy_next_upstream</code> 模块定义的错误</li>
+<li><code>fail_timeout</code>:<code>max_fails</code> 次失败后，暂停的时间。</li>
+<li><code>backup</code>：其它所有的非 <code>backup</code> 机器 <code>down</code> 或者忙的时候，请求 <code>backup</code> 机器。所以这台机器压力会最轻</li>
+</ul>
+<h2 id="Nginx-配置说明"><a href="#Nginx-配置说明" class="headerlink" title="Nginx 配置说明"></a>Nginx 配置说明</h2><h3 id="配置文件区域"><a href="#配置文件区域" class="headerlink" title="配置文件区域"></a>配置文件区域</h3><p>Nginx 主要配置文件 nginx.conf，里面主要包括以下几个配置区域，如下表：</p>
+<table>
+<thead>
+<tr>
+<th>配置区域</th>
+<th>说明</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>main</td>
+<td>配置影响 nginx 全局的指令。一般有运行 nginx 服务器的用户组，nginx 进程 pid 存放路径，日志存放路径，配置文件引入，允许生成 worker process 数等。</td>
+<td></td>
+</tr>
+<tr>
+<td>events</td>
+<td>配置影响 nginx 服务器或与用户的网络连接。有每个进程的最大连接数，选取哪种事件驱动模型处理连接请求，是否允许同时接受多个网路连接，开启多个网络连接序列化等。</td>
+<td></td>
+</tr>
+<tr>
+<td>http</td>
+<td>可以嵌套多个 server，配置代理，缓存，日志定义等绝大多数功能和第三方模块的配置。如文件引入，mime-type 定义，日志自定义，是否使用 sendfile 传输文件，连接超时时间，单连接请求数等。</td>
+<td></td>
+</tr>
+<tr>
+<td>upstream</td>
+<td>配置 HTTP 负载均衡器分配流量到几个应用程序服务器。</td>
+<td></td>
+</tr>
+<tr>
+<td>server</td>
+<td>配置虚拟主机的相关参数，一个 http 中可以有多个 server。</td>
+<td></td>
+</tr>
+<tr>
+<td>location</td>
+<td>配置请求的路由，以及允许根据用户请求的URI来匹配指定的各 location 以进行访问配置；匹配到时，将被 location 块中的配置所处理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="核心功能配置"><a href="#核心功能配置" class="headerlink" title="核心功能配置"></a>核心功能配置</h3><p>nginx 核心功能配置主要是 <code>main</code> 和 <code>events</code> 的顶层全局配置，都是配置 nginx 核心模块（ngx_core_module），管理服务器级别的行为。下表包含是大部分常用的配置选项，更多配置请参考官方文档：<a href="http://nginx.org/en/docs/ngx_core_module.html" target="_blank" rel="noopener">http://nginx.org/en/docs/ngx_core_module.html</a></p>
+<table>
+<thead>
+<tr>
+<th><strong>配置类别</strong></th>
+<th><strong>配置选项</strong></th>
+<th><strong>上下文</strong></th>
+<th><strong>语法</strong></th>
+<th><strong>默认值</strong></th>
+<th><strong>功能描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>基本配置</strong></td>
+<td><strong>user</strong></td>
+<td><strong>main</strong></td>
+<td><strong>user username [groupname]</strong></td>
+<td><strong>nobody</strong></td>
+<td><strong>以那个用户身份运行,以在configure指定的用户为准</strong></td>
+</tr>
+<tr>
+<td><strong>pid</strong></td>
+<td><strong>main</strong></td>
+<td><strong>pid /path/to/pid_filename</strong></td>
+<td><strong>nginx.pid</strong></td>
+<td><strong>指定nginx的pid文件</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>worker_rlimit_nofile</strong></td>
+<td><strong>main</strong></td>
+<td></td>
+<td><strong>受linux内核文件描述符数量限制</strong></td>
+<td><strong>指定一个worker进程所能够打开的句柄数。因为Linux对每个进程所能打开的文件描述数量是有限制的，默认一般是1024个，可通过ulimit -n FILECNT或/etc/securit/limits.conf配置修改linux默认能打开的文件句柄数限制。建议值为：系统最大数量/进程数。但进程间工作量并不是平均分配的，所以可以设置在大一些。推荐值为：655350。</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>优化性能相关配置</strong></td>
+<td><strong>worker_procrsses</strong></td>
+<td><strong>main</strong></td>
+<td>**worker_processes number \</td>
+<td>auto;**</td>
+<td><strong>1</strong></td>
+<td><strong>work进程的个数.**</strong>如果负载以CPU密集型应用为主，一般会设置与机器cpu核数一致或少一个（用来处理用户等其他任务），如果负载以IO密集型为主，如响应大量内容给客户端，则worker数应该为CPU个数的1.5或2倍。因为更多的worker数，只会导致进程来竞争cpu资源了，从而带来不必要的上下文切换。而且，nginx为了更好的利用多核特性，具有cpu绑定选项，我们可以将某一个进程绑定在某一个核上，这样就不会因为进程的切换带来cache的失效。**</td>
+</tr>
+<tr>
+<td><strong>worker_cpu_affinity</strong></td>
+<td><strong>main</strong></td>
+<td><strong>worker_cpu_affinity cpumask …;</strong></td>
+<td><strong>无，不绑定</strong></td>
+<td><strong>将工作进程绑定到特定的CPU上，减少CPU在进程之间切换的开销。用二进制bit位表示进程绑定在哪个CPU内核。如4工作进程4内核：worker_processes 4;**</strong>worker_cpu_affinity 0001 0010 0100 1000;<strong><strong>2工作进程4内核：</strong></strong>worker_processes 2;<strong>**worker_cpu_affinity 0101 1010;</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>worker_priority</strong></td>
+<td><strong>main</strong></td>
+<td><strong>worker_priority number;</strong></td>
+<td><strong>0</strong></td>
+<td><strong>工作进程调度优先级，-20到19之间的值，值越小越优先调用。如果系统同时运行多个任务，你可能需要提高nginx的工作进程的优先级</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>timer_resolution</strong></td>
+<td><strong>main</strong></td>
+<td><strong>timer_resolution interval;</strong></td>
+<td><strong>无</strong></td>
+<td><strong>每次内核事件调用返回时，都会使用gettimeday（）来更新nginx缓存时钟；timer_resolution用于定义每隔多久才会由gettimeday（）更新一次缓存时钟；x86-64系统上，gettimeday()代价已经很小，可以忽略此配置</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ssl_engine</strong></td>
+<td><strong>main</strong></td>
+<td><strong>ssl_engine device;</strong></td>
+<td><strong>无</strong></td>
+<td><strong>在存在ssl硬件加速器的服务器上，指定所使用的ssl硬件加速设备。由于https链接所消耗的资源比http大得多，可能要多消耗5、6倍，最好有专门处理ssl的硬件设备</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>事件相关配置</strong></td>
+<td><strong>worker_commections</strong></td>
+<td><strong>events</strong></td>
+<td><strong>worker_connections number;</strong></td>
+<td><strong>512</strong></td>
+<td><strong>每个worker能够并发响应的最大请求数。系统每处理一个请求就要消耗一个套接字文件，如果为代理服务器的话，worker_rlimit_nofile=worker_commections*2</strong></td>
+</tr>
+<tr>
+<td><strong>use</strong></td>
+<td><strong>events</strong></td>
+<td><strong>use method;</strong></td>
+<td><strong>无，自动选择</strong></td>
+<td><strong>指定使用哪种模型（select/poll/epoll）,建议让nginx自动选择,**</strong>linux内核2.6以上一般能使用epoll，提高性能。**</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>accept_mutex</strong></td>
+<td><strong>events</strong></td>
+<td>**accept_mutex on \</td>
+<td>off;**</td>
+<td><strong>Off(1.11.3版本前默认on)</strong></td>
+<td><strong>是否打开nginx的accept锁；此锁能够让多个worker进行轮流地、序列化地与新的客户端建立连接；而通常当一个worker进程的负载达到其上限的7/8，master就尽可能不将请求调度至worker.**</strong>1.11.3版本epoll支持EPOLLEXCLUSIVE 标记，不再有惊群问题 。**</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>accept_mutex_delay</strong></td>
+<td><strong>events</strong></td>
+<td><strong>accept_mutex_delay time;</strong></td>
+<td><strong>500ms</strong></td>
+<td><strong>使用accept锁以后，只有一个worker能取得锁，一个worker进程为取得accept锁的等待时长，即用户建立等待的时间，如果某worker进程在某次试图取得锁时失败了，至少要等待#ms才能在一次请求锁</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>multi_accept</strong></td>
+<td><strong>events</strong></td>
+<td>**multi_accept on \</td>
+<td>off;**</td>
+<td><strong>off</strong></td>
+<td><strong>是否允许一次性地响应多个用户请求</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>调试、定位问题配置</strong></td>
+<td><strong>daemon</strong></td>
+<td><strong>main</strong></td>
+<td>**daemon on \</td>
+<td>off;**</td>
+<td><strong>on</strong></td>
+<td><strong>nginx是否以守护进程运行，是否让nignx运行于后台；调试时应该为off，使得所有信息直接输出在控制台</strong></td>
+</tr>
+<tr>
+<td><strong>master_process</strong></td>
+<td><strong>main</strong></td>
+<td>**master_process on \</td>
+<td>off;**</td>
+<td><strong>on</strong></td>
+<td><strong>是否以master/worker模式运行nginx，默认为on，调试时可以设置为off以方便追踪</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>error_log</strong></td>
+<td><strong>main, http, mail, stream, server, location</strong></td>
+<td><strong>error_log file [level];</strong></td>
+<td><strong>error_log logs/error.log error;</strong></td>
+<td><strong>配置错误日志文件的路径和日志级别。日志级别有debug, info, notice, warn, error, crit, alert和emerg几种。调试时可以使用debug级别，但要求在编译时必须使用–with-debug启用debug功能，默认通常为error级别.</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="HTTP-核心配置"><a href="#HTTP-核心配置" class="headerlink" title="HTTP 核心配置"></a>HTTP 核心配置</h3><p>http 功能核心配置主要是 <code>http</code> 块、<code>server</code> 块和 <code>location</code> 块的配置，包括 HTTP 核心模块（ngx_http_core_module）和一些扩展模块（如ngx_stream_ssl_module），提供管理 WEB 服务器级别的行为。</p>
+<p>必须使用虚拟机来配置站点，每个虚拟主机使用一个 <code>server{}</code> 段来配置，非虚拟主机的配置和公共选项，需要定义在 server 之外，http 之内。</p>
+<p>下表包含是大部分常用的配置选项，更多配置请参考官方文档：<a href="http://nginx.org/en/docs/" target="_blank" rel="noopener">http://nginx.org/en/docs/</a></p>
+<table>
+<thead>
+<tr>
+<th><strong>配置类别</strong></th>
+<th><strong>配置选项/模块</strong></th>
+<th><strong>上下文</strong></th>
+<th><strong>语法</strong></th>
+<th><strong>默认值</strong></th>
+<th><strong>功能描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>基本配置</strong></td>
+<td><strong>http</strong></td>
+<td><strong>main</strong></td>
+<td><strong>http { … }</strong></td>
+<td><strong>无</strong></td>
+<td><strong>提供HTTP服务器配置上下文</strong></td>
+</tr>
+<tr>
+<td><strong>server</strong></td>
+<td><strong>http</strong></td>
+<td><strong>server { … }</strong></td>
+<td><strong>无</strong></td>
+<td><strong>HTTP服务器的核心配置，定义一个虚拟主机：nginx支持使用基于主机名或IP的虚拟主机</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>listen</strong></td>
+<td><strong>server</strong></td>
+<td><strong>listen address[:port]**</strong>listen prot<strong>**listen unix:socket</strong></td>
+<td>**listen :80 \</td>
+<td>:8000**</td>
+<td><strong>配置虚拟主机监听的IP地址和端口，默认监听本机IP地址和80或8000端口。如果只设置了IP没设端口，默认使用80端口。如果只设置了端口，没设置IP默认使用本机IP。**</strong>后面可以指定一些参数：<strong><strong>default_server:定义此server为http中默认的server；如果所有的server中任何一个listen使用此参数，那么第一个server即为默认server；</strong></strong>rcvbuf=SIZE：接收缓存大小；<strong><strong>sndbuf=SIZE: 发送缓存大小；</strong></strong>ssl：https server：必须以ssl连接；**</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>server_name</strong></td>
+<td><strong>server</strong></td>
+<td><strong>server_name name …;</strong></td>
+<td><strong>“”</strong></td>
+<td><strong>配置虚拟主机的域名，可以指定多个，用空格分隔。默认为空。**</strong>名称可以使用通配符和正则表达式（通常以~开头）：当nginx收到一个请求时，会取出其首部的server的值，而后跟众server_name进行比较：比较方式<strong><strong>(1) 先做精确匹配，如<a href="http://www.tjiyu.com" target="_blank" rel="noopener">www.tjiyu.com</a></strong></strong>(2) 左侧通配符匹配，如tjiyu.com<strong><strong>(3) 右侧通配符匹配，如www.</strong></strong>(4) 正则表达式匹配**</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>server_name_hash_bucket_size</strong></td>
+<td><strong>server</strong></td>
+<td><strong>server_names_hash_bucket_size size;</strong></td>
+<td>**32\</td>
+<td>64\</td>
+<td>128**</td>
+<td><strong>为了实现快速主机查找，nginx使用hash表来保存主机名。**</strong>默认值取决于处理器缓存线的大小。**</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>location</strong></td>
+<td><strong>server, location</strong></td>
+<td>**location [ = \</td>
+<td>~ \</td>
+<td>~ \</td>
+<td>^~ ] uri { … }<strong>**location @name { … }</strong></td>
+<td><strong>无</strong></td>
+<td><strong>允许根据用户请求的URI来匹配指定的各location以进行访问配置；匹配到时，将被location块中的配置所处理。**</strong>=：精确匹配；<strong><strong>~：正则表达式模式匹配，匹配时区分字符大小写；</strong></strong>~：正则表达式模式匹配，匹配时忽略字符大小写；<strong><strong>^~:只需要前半部分与uri匹配即可，不检查正则表达式；</strong></strong>匹配优先级：<strong>**字符字面量最精确匹配、正则表达式检索（由多个时，由第一个匹配到的所处理），按字符字面量。</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>资源路径定义配置</strong></td>
+<td><strong>root</strong></td>
+<td><strong>http, server, location, if in location</strong></td>
+<td><strong>root path;</strong></td>
+<td><strong>root html;</strong></td>
+<td><strong>设置web资源路径，用于指定请求的根文档目录，从根开始匹配。**</strong>如root /html/image/，请求”/tjiyu.gif”对应的文件为”/html/image/tjiyu.gif”**</td>
+</tr>
+<tr>
+<td><strong>alias</strong></td>
+<td><strong>location</strong></td>
+<td><strong>alias path;</strong></td>
+<td><strong>无</strong></td>
+<td><strong>指定路径别名，只能用于location中，从最后一个/开始匹配。**</strong>如location /i/ {<strong><strong>alias /data/w3/images/;</strong></strong>}<strong>**请求”/i/top.gif”, 实际文件”/data/w3/images/top.gif”</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Index</strong></td>
+<td><strong>http, server, location</strong></td>
+<td><strong>index file …;</strong></td>
+<td><strong>index index.html;</strong></td>
+<td><strong>ngx_http_index_module.**</strong>定义默认页面，可以跟多个值。自左向右匹配。**</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>error_page</strong></td>
+<td><strong>http, server, location, if in location</strong></td>
+<td><strong>error_page code … [=[response]] uri;</strong></td>
+<td><strong>无</strong></td>
+<td><strong>ngx_http_core_module**</strong>当对于某个请求发回错误时，如果匹配上了error_page指令中设定的code，则从定向至新的URI中，错误重定向.<strong><strong>如 error_page 500 502 503 504 /50x.html;</strong></strong>也可以改变返回码。<strong>**如error_page 404 =200 /404.html;</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>try_files</strong></td>
+<td><strong>server, location</strong></td>
+<td><strong>try_files file … uri;**</strong>try_files file … =code;**</td>
+<td><strong>无</strong></td>
+<td><strong>自左向右尝试读取有path所指定路径，在第一找到即停止并返回，如果所有path均不存在，则返回最后一个uri或者code.**</strong>如try_files $uri $uri/index.html $uri.html =404;**</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>网络连接相关设置</strong></td>
+<td><strong>keepalive_timeout</strong></td>
+<td><strong>http, server, location</strong></td>
+<td><strong>keepalive_timeout timeout [header_timeout];</strong></td>
+<td><strong>75s</strong></td>
+<td><strong>保持连接的超时时长，默认为75s。**</strong>降低每个连接的alive时间可在一定程度上提高可响应连接数量，所以一般可适当降低此值**</td>
+</tr>
+<tr>
+<td><strong>keepalive_requests</strong></td>
+<td><strong>http, server, location</strong></td>
+<td><strong>keepalive_requests number;</strong></td>
+<td><strong>100</strong></td>
+<td><strong>在一次长连接上允许承载的最大请求数。</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>keepalive_disable</strong></td>
+<td><strong>http, server, location</strong></td>
+<td>**keepalive_disable none \</td>
+<td>browser …;**</td>
+<td><strong>msie6（ie6无法长连接）</strong></td>
+<td><strong>对指定的浏览器禁止使用长连接。</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>tcp_nodelay</strong></td>
+<td><strong>http, server, location</strong></td>
+<td>**tcp_nodelay on \</td>
+<td>off;**</td>
+<td><strong>on</strong></td>
+<td><strong>这里指ngx_http_core_module模块的选项。**</strong>对keepalive连接是否使用tcp_nodelay选项<strong>**启动配置，会在数据包达到一定大小后再发送数据。这样会减少网络通信次数，降低阻塞概率，但也会影响响应及时性。比较适合于文件下载这类的大数据通信场景。</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>client_header_timeout</strong></td>
+<td><strong>http, server</strong></td>
+<td><strong>client_header_timeout time;</strong></td>
+<td><strong>60s</strong></td>
+<td><strong>读取http请求首部的超时时长。**</strong>如果客户端在此时间内未传输整个头，则会向客户端返回408（请求超时）错误。**</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>client_body_timeout</strong></td>
+<td><strong>http, server, location</strong></td>
+<td><strong>client_body_timeout time;</strong></td>
+<td><strong>60s</strong></td>
+<td><strong>读取http请求包体的超时时间。</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>send_timeout</strong></td>
+<td><strong>http, server, location</strong></td>
+<td><strong>send_timeout time;</strong></td>
+<td><strong>60s</strong></td>
+<td><strong>发送响应的超时时长。**</strong>超时后连接将关闭。**</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>对客户端请求的限制配置</strong></td>
+<td><strong>limit_except</strong></td>
+<td><strong>location</strong></td>
+<td><strong>limit_except method … { … }</strong></td>
+<td><strong>on</strong></td>
+<td><strong>指定范围之外的其他方法的访问控制。**</strong>方法有：GET, HEAD, POST, PUT, DELETE, MKCOL, COPY, MOVE, OPTIONS, PROPFIND, PROPPATCH, LOCK, UNLOCK, or PATCH.<strong><strong>如只允许GET访问：</strong></strong>limit_except GET {<strong><strong>allow 192.168.1.0/32;</strong></strong>deny all;<strong>**}</strong></td>
+</tr>
+<tr>
+<td><strong>client_max_body_size</strong></td>
+<td><strong>http, server, location</strong></td>
+<td><strong>client_max_body_size size;</strong></td>
+<td><strong>1m</strong></td>
+<td><strong>http请求包体的最大值，常用于限定客户端所能够请求的最大包体，根据请求首部中的Content-Length来检查，以避免无用的传输。</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>limit_rate</strong></td>
+<td><strong>http, server, location, if in location</strong></td>
+<td><strong>limit_rate rate;</strong></td>
+<td><strong>0</strong></td>
+<td><strong>限制客户端每秒传输的字节数，默认为0，表示没有限制。</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>limit_rate_after</strong></td>
+<td><strong>http, server, location, if in location</strong></td>
+<td><strong>limit_rate_after size;</strong></td>
+<td><strong>0</strong></td>
+<td><strong>nginx向客户端发送响应报文时，如果时长超过了此处指定的时长，则后续的发送过程开始限速（下载站点常用）。**</strong>配置上面的limit_rate使用。**</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>对客户端请求的特殊处理</strong></td>
+<td><strong>ignore_invalid_headers</strong></td>
+<td><strong>http, server</strong></td>
+<td>**ignore_invalid_headers on \</td>
+<td>off;**</td>
+<td><strong>on</strong></td>
+<td><strong>是否忽略不合法的http首部，默认为on，off意味着请求首部中出现不合规的首部将拒绝响应。</strong></td>
+</tr>
+<tr>
+<td><strong>log_not_found</strong></td>
+<td><strong>http, server, location</strong></td>
+<td>**log_not_found on \</td>
+<td>off;**</td>
+<td><strong>on</strong></td>
+<td><strong>用户访问的文件不存在时，是否将其记录到错误日志中。</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>resolver</strong></td>
+<td><strong>http, server, location</strong></td>
+<td>**resolver address … [valid=time] [ipv6=on\</td>
+<td>off];**</td>
+<td><strong>无</strong></td>
+<td><strong>这里指ngx_http_core_module模块选项、**</strong>指定nginx使用的dns服务器地址。<strong>**valid = 30s，整缓存时间设置。在1.1.9版之前，不可能调整缓存时间，而nginx总是缓存答案5分钟的时间。</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>resolver_timeout</strong></td>
+<td><strong>http, server, location</strong></td>
+<td><strong>resolver_timeout time;</strong></td>
+<td><strong>30s</strong></td>
+<td><strong>指定DNS解析超时时长。</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>server_tokens</strong></td>
+<td><strong>http, server, location</strong></td>
+<td>**server_tokens on \</td>
+<td>off \</td>
+<td>string;**</td>
+<td><strong>on</strong></td>
+<td><strong>是否在错误页面中显示和”响应头字段中发出nginx的版本号。**</strong>从版本1.9.13开始，可以使用带有变量的字符串显式设置。 空字符串禁用。**</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>文件操作的优化</strong></td>
+<td><strong>sendfile</strong></td>
+<td><strong>http, server, location, if in location</strong></td>
+<td>**sendfile on \</td>
+<td>off;**</td>
+<td><strong>off</strong></td>
+<td><strong>是否启用sendfile内核复制模式功能。**</strong>作为静态服务器可以提高最大的IO访问速度。传统的文件读写采用read和write方式，流程为：硬盘 &gt;&gt; kernel buffer &gt;&gt; user buffer&gt;&gt; kernel socket buffer &gt;&gt;协议栈，采用sendfile文件读写的流程为：硬盘 &gt;&gt; kernel buffer (快速拷贝到kernelsocket buffer) &gt;&gt;协议栈，很明显sendfile这个系统调用减少了内核到用户模式之间的切换和数据拷贝次数，直接从内核缓存的数据拷贝到协议栈，提高了很大的效率。**</td>
+</tr>
+<tr>
+<td><strong>aio</strong></td>
+<td><strong>http, server, location</strong></td>
+<td>**aio on \</td>
+<td>off \</td>
+<td>threads[=pool];**</td>
+<td><strong>off</strong></td>
+<td><strong>是否启用异步文件IO功能。**</strong>Linux从内核版本2.6.22开始支持，有必要启用directio，否则读取将阻塞。<strong><strong>directio只能用于读取在512字节边界（或XFS为4K）上对齐的块。文件结束未对齐将在阻塞模式下读取。</strong></strong>当在Linux上同时启用AIO和sendfile功能时，AIO用于大于或等于directio指令中指定大小的文件，而小于或禁用directio时则用sendfile。<strong><strong>location /video/ {</strong></strong>sendfile on;<strong><strong>aio on;</strong></strong>directio 8m;<strong>**}</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>open_file_cache</strong></td>
+<td><strong>http, server, location</strong></td>
+<td><strong>open_file_cache off;**</strong>open_file_cache max=N [inactive=time];**</td>
+<td><strong>off</strong></td>
+<td><strong>是否打开文件缓存功能。**</strong>max：用于缓存条目的最大值，允许打开的缓存条目最大数，当满两类以后将根据LRU（最小最少连接数）算法进行置换<strong><strong>inactive：某缓存条目在指定时长内没有被访问过时，将自动被删除，即缓存有效期，通常默认为60s。</strong></strong>缓存的信息包括：<strong>    </strong>文件句柄、文件大小和上次修改时间；<strong>    </strong>已经打开的目录结构；<strong><strong>没有找到或没有访问权限的信息等。</strong></strong>建议值：max=655350（和worker_rlimit_nofile参数一致） inactive=20s;**</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>open_file_cache_errors</strong></td>
+<td><strong>http, server, location</strong></td>
+<td>**open_file_cache_errors on \</td>
+<td>off;**</td>
+<td><strong>off</strong></td>
+<td><strong>是否缓存文件找不到或没有权限访问等相关信息。</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>open_file_cache_valid</strong></td>
+<td><strong>http, server, location</strong></td>
+<td><strong>open_file_cache_valid time;</strong></td>
+<td><strong>60s</strong></td>
+<td><strong>多长时间检查一次缓存中的条目是否超出非活动时长。**</strong>建议值：小于等于open_file_cache inactive**</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>open_file_cache_min_use</strong></td>
+<td><strong>http, server, location</strong></td>
+<td><strong>open_file_cache_min_uses number;</strong></td>
+<td><strong>1</strong></td>
+<td><strong>在open_file_cache inactive指定的时长内被访问超过此处指定的次数时，才不会被删除（删除低命中率的缓存）。</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Gzip压缩相关配置</strong></td>
+<td><strong>gzip</strong></td>
+<td><strong>http, server, location, if in location</strong></td>
+<td>**gzip on \</td>
+<td>off;**</td>
+<td><strong>off</strong></td>
+<td><strong>开启内容压缩，可以有效降低客户端的访问流量和网络带宽</strong></td>
+</tr>
+<tr>
+<td><strong>gzip_min_length</strong></td>
+<td><strong>http, server, location</strong></td>
+<td><strong>gzip_min_length length;</strong></td>
+<td><strong>20k</strong></td>
+<td><strong>内容超过最少长度后才开启压缩，因为太短的内容压缩效果不佳，且压缩过程还会浪费系统资源。这个压缩长度会作为http响应头Content-Length字段返回给客户端。 建议值：64</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>gzip_comp_level</strong></td>
+<td><strong>http, server, location</strong></td>
+<td><strong>gzip_comp_level 1~9;</strong></td>
+<td><strong>1</strong></td>
+<td><strong>压缩级别，默认值为1。范围为1～9级，压缩级别越高压缩率越高，但对系统性能要求越高。**</strong>建议值：4**</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>gzip_types</strong></td>
+<td><strong>http, server, location</strong></td>
+<td><strong>gzip_types mime-type …;</strong></td>
+<td><strong>text/html</strong></td>
+<td><strong>压缩内容类型，默认为text/html;。只压缩html文本，一般我们都会压缩js、css、json之类的，可以把这些常见的文本数据都配上。如：text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="" data-cs="" data-r="" data-o="" data-a="" data-d="false">查看评论</div>
+
+
+    </div>
+    
+        <div class="side">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx-简介"><span class="toc-number">1.</span> <span class="toc-text">Nginx 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是-Nginx"><span class="toc-number">1.1.</span> <span class="toc-text">什么是 Nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx-的应用场景"><span class="toc-number">1.2.</span> <span class="toc-text">Nginx 的应用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx-虚拟主机"><span class="toc-number">2.</span> <span class="toc-text">Nginx 虚拟主机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是虚拟主机？"><span class="toc-number">2.1.</span> <span class="toc-text">什么是虚拟主机？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx-配置文件的结构"><span class="toc-number">2.2.</span> <span class="toc-text">Nginx 配置文件的结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于端口的虚拟主机配置"><span class="toc-number">2.3.</span> <span class="toc-text">基于端口的虚拟主机配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#需求"><span class="toc-number">2.3.1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建目录及文件"><span class="toc-number">2.3.2.</span> <span class="toc-text">创建目录及文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置虚拟主机"><span class="toc-number">2.3.3.</span> <span class="toc-text">配置虚拟主机</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于域名的虚拟主机配置"><span class="toc-number">2.4.</span> <span class="toc-text">基于域名的虚拟主机配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#需求-1"><span class="toc-number">2.4.1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置-Windows-Hosts-文件"><span class="toc-number">2.4.2.</span> <span class="toc-text">配置 Windows Hosts 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建目录及文件-1"><span class="toc-number">2.4.3.</span> <span class="toc-text">创建目录及文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置虚拟主机-1"><span class="toc-number">2.4.4.</span> <span class="toc-text">配置虚拟主机</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx-反向代理"><span class="toc-number">3.</span> <span class="toc-text">Nginx 反向代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是代理服务器？"><span class="toc-number">3.1.</span> <span class="toc-text">什么是代理服务器？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要使用代理服务器？"><span class="toc-number">3.2.</span> <span class="toc-text">为什么要使用代理服务器？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#提高访问速度"><span class="toc-number">3.2.1.</span> <span class="toc-text">提高访问速度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#防火墙作用"><span class="toc-number">3.2.2.</span> <span class="toc-text">防火墙作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过代理服务器访问不能访问的目标站点"><span class="toc-number">3.2.3.</span> <span class="toc-text">通过代理服务器访问不能访问的目标站点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是正向代理？"><span class="toc-number">3.3.</span> <span class="toc-text">什么是正向代理？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是反向代理？"><span class="toc-number">3.4.</span> <span class="toc-text">什么是反向代理？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反向代理有哪些主要应用？"><span class="toc-number">3.5.</span> <span class="toc-text">反向代理有哪些主要应用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-Nginx-反向代理-Tomcat"><span class="toc-number">3.6.</span> <span class="toc-text">使用 Nginx 反向代理 Tomcat</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#需求-2"><span class="toc-number">3.6.1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动-Tomcat-容器"><span class="toc-number">3.6.2.</span> <span class="toc-text">启动 Tomcat 容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置-Nginx-反向代理"><span class="toc-number">3.6.3.</span> <span class="toc-text">配置 Nginx 反向代理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx-负载均衡"><span class="toc-number">4.</span> <span class="toc-text">Nginx 负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是负载均衡"><span class="toc-number">4.1.</span> <span class="toc-text">什么是负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx-实现负载均衡"><span class="toc-number">4.2.</span> <span class="toc-text">Nginx 实现负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx-配置负载均衡"><span class="toc-number">4.2.1.</span> <span class="toc-text">Nginx 配置负载均衡</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#相关配置说明"><span class="toc-number">4.2.2.</span> <span class="toc-text">相关配置说明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx-配置说明"><span class="toc-number">5.</span> <span class="toc-text">Nginx 配置说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件区域"><span class="toc-number">5.1.</span> <span class="toc-text">配置文件区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#核心功能配置"><span class="toc-number">5.2.</span> <span class="toc-text">核心功能配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-核心配置"><span class="toc-number">5.3.</span> <span class="toc-text">HTTP 核心配置</span></a></li></ol></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
