@@ -2006,7 +2006,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff8a40;
+  background: #ab389d;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3167,8 +3167,11 @@ pre {
   color: #000;
 }
 .back-to-top {
-  background: rgba(134,134,134,0.369);
+  background: rgba(138,136,136,0.58);
 }
 .sidebar-toggle {
-  background: rgba(134,134,134,0.369);
+  background: rgba(138,136,136,0.58);
+}
+.sidebar a:hover {
+  color: #000;
 }
