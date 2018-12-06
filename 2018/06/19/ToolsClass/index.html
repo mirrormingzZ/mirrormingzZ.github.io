@@ -1,142 +1,1273 @@
-
 <!DOCTYPE html>
-<html lang="" class="loading">
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>mirrorming - 每天进步一点点</title>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
-    <meta name="keywords" content="mirrorming,"> 
-    <meta name="description" content="听过很多的道理,依然过不好这一生,"> 
-    <meta name="author" content="mirrorming"> 
-    <link rel="alternative" href="atom.xml" title="mirrorming" type="application/atom+xml"> 
-    <link rel="icon" href="/img/favicon.png"> 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <link rel="stylesheet" href="/css/diaspora.css">
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="CookieUtils123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用工具类">
+<meta property="og:url" content="https://mirrormingzZ.github.io/2018/06/19/ToolsClass/index.html">
+<meta property="og:site_name" content="mirrorming">
+<meta property="og:description" content="CookieUtils123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-06T05:04:22.893Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用工具类">
+<meta name="twitter:description" content="CookieUtils123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":3,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://mirrormingzZ.github.io/2018/06/19/ToolsClass/">
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "f930702d"
+    });
+  daovoice('update');
+  </script>
+
+  <title>常用工具类 | mirrorming</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c7914362babf998602de8c0b7eb6de60";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
 </head>
-</html>
-<body class="loading">
-    <div id="loader"></div>
-    <div id="single">
-    <div id="top" style="display: block;">
-    <div class="bar" style="width: 0;"></div>
-    <a class="icon-home image-icon" href="javascript:;"></a>
-    <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">常用工具类</h3>
-    <div class="social">
-        <!--<div class="like-icon">-->
-            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
-        <!--</div>-->
-        <div>
-            <div class="share">
-                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
-            </div>
-            <div id="qr"></div>
-        </div>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+      <a href="https://github.com/mirrormingzZ/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     </div>
-    <div class="scrollbar"></div>
-</div>
-    <div class="section">
-        <div class="article">
-    <div class="main">
-        <h1 class="title">常用工具类</h1>
-        <div class="stuff">
-            <span>六月 19, 2018</span>
-            
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Java/">Java</a></li></ul>
 
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">mirrorming</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">每天进步一点点</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mirrormingzZ.github.io/2018/06/19/ToolsClass/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mirrorming">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mirrorming">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">常用工具类</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T22:38:45+08:00">
+                2018-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
 
         </div>
-        <div class="content markdown">
-            <h2 id="CookieUtils"><a href="#CookieUtils" class="headerlink" title="CookieUtils"></a>CookieUtils</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.http.Cookie;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.UnsupportedEncodingException;</span><br><span class="line"><span class="keyword">import</span> java.net.URLDecoder;</span><br><span class="line"><span class="keyword">import</span> java.net.URLEncoder;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Cookie 工具类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CookieUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 得到Cookie的值, 不编码</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cookieName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getCookieValue</span><span class="params">(HttpServletRequest request, String cookieName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getCookieValue(request, cookieName, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 得到Cookie的值,</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cookieName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getCookieValue</span><span class="params">(HttpServletRequest request, String cookieName, <span class="keyword">boolean</span> isDecoder)</span> </span>&#123;</span><br><span class="line">        Cookie[] cookieList = request.getCookies();</span><br><span class="line">        <span class="keyword">if</span> (cookieList == <span class="keyword">null</span> || cookieName == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String retValue = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cookieList.length; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (cookieList[i].getName().equals(cookieName)) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (isDecoder) &#123;</span><br><span class="line">                        retValue = URLDecoder.decode(cookieList[i].getValue(), <span class="string">"UTF-8"</span>);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        retValue = cookieList[i].getValue();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> retValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 得到Cookie的值,</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cookieName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getCookieValue</span><span class="params">(HttpServletRequest request, String cookieName, String encodeString)</span> </span>&#123;</span><br><span class="line">        Cookie[] cookieList = request.getCookies();</span><br><span class="line">        <span class="keyword">if</span> (cookieList == <span class="keyword">null</span> || cookieName == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String retValue = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cookieList.length; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (cookieList[i].getName().equals(cookieName)) &#123;</span><br><span class="line">                    retValue = URLDecoder.decode(cookieList[i].getValue(), encodeString);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> retValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置Cookie的值 不设置生效时间默认浏览器关闭即失效,也不编码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response, String cookieName,</span></span></span><br><span class="line"><span class="function"><span class="params">                                 String cookieValue)</span> </span>&#123;</span><br><span class="line">        setCookie(request, response, cookieName, cookieValue, -<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置Cookie的值 在指定时间内生效,但不编码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response, String cookieName,</span></span></span><br><span class="line"><span class="function"><span class="params">                                 String cookieValue, <span class="keyword">int</span> cookieMaxage)</span> </span>&#123;</span><br><span class="line">        setCookie(request, response, cookieName, cookieValue, cookieMaxage, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置Cookie的值 不设置生效时间,但编码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response, String cookieName,</span></span></span><br><span class="line"><span class="function"><span class="params">                                 String cookieValue, <span class="keyword">boolean</span> isEncode)</span> </span>&#123;</span><br><span class="line">        setCookie(request, response, cookieName, cookieValue, -<span class="number">1</span>, isEncode);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置Cookie的值 在指定时间内生效, 编码参数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response, String cookieName,</span></span></span><br><span class="line"><span class="function"><span class="params">                                 String cookieValue, <span class="keyword">int</span> cookieMaxage, <span class="keyword">boolean</span> isEncode)</span> </span>&#123;</span><br><span class="line">        doSetCookie(request, response, cookieName, cookieValue, cookieMaxage, isEncode);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置Cookie的值 在指定时间内生效, 编码参数(指定编码)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response, String cookieName,</span></span></span><br><span class="line"><span class="function"><span class="params">                                 String cookieValue, <span class="keyword">int</span> cookieMaxage, String encodeString)</span> </span>&#123;</span><br><span class="line">        doSetCookie(request, response, cookieName, cookieValue, cookieMaxage, encodeString);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 删除Cookie带cookie域名</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">deleteCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    String cookieName)</span> </span>&#123;</span><br><span class="line">        doSetCookie(request, response, cookieName, <span class="string">""</span>, -<span class="number">1</span>, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置Cookie的值，并使其在指定时间内生效</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cookieMaxage cookie生效的最大秒数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">doSetCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">                                          String cookieName, String cookieValue, <span class="keyword">int</span> cookieMaxage, <span class="keyword">boolean</span> isEncode)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (cookieValue == <span class="keyword">null</span>) &#123;</span><br><span class="line">                cookieValue = <span class="string">""</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isEncode) &#123;</span><br><span class="line">                cookieValue = URLEncoder.encode(cookieValue, <span class="string">"utf-8"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            Cookie cookie = <span class="keyword">new</span> Cookie(cookieName, cookieValue);</span><br><span class="line">            <span class="keyword">if</span> (cookieMaxage &gt; <span class="number">0</span>)</span><br><span class="line">                cookie.setMaxAge(cookieMaxage);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> != request) &#123;<span class="comment">// 设置域名的cookie</span></span><br><span class="line">                String domainName = getDomainName(request);</span><br><span class="line"><span class="comment">//                System.out.println(domainName);</span></span><br><span class="line">                <span class="keyword">if</span> (!<span class="string">"localhost"</span>.equals(domainName)) &#123;</span><br><span class="line">                    cookie.setDomain(domainName);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            cookie.setPath(<span class="string">"/"</span>);</span><br><span class="line">            response.addCookie(cookie);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置Cookie的值，并使其在指定时间内生效</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cookieMaxage cookie生效的最大秒数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">doSetCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">                                          String cookieName, String cookieValue, <span class="keyword">int</span> cookieMaxage, String encodeString)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (cookieValue == <span class="keyword">null</span>) &#123;</span><br><span class="line">                cookieValue = <span class="string">""</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cookieValue = URLEncoder.encode(cookieValue, encodeString);</span><br><span class="line">            &#125;</span><br><span class="line">            Cookie cookie = <span class="keyword">new</span> Cookie(cookieName, cookieValue);</span><br><span class="line">            <span class="keyword">if</span> (cookieMaxage &gt; <span class="number">0</span>)</span><br><span class="line">                cookie.setMaxAge(cookieMaxage);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> != request) &#123;<span class="comment">// 设置域名的cookie</span></span><br><span class="line">                String domainName = getDomainName(request);</span><br><span class="line"><span class="comment">//                System.out.println(domainName);</span></span><br><span class="line">                <span class="keyword">if</span> (!<span class="string">"localhost"</span>.equals(domainName)) &#123;</span><br><span class="line">                    cookie.setDomain(domainName);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            cookie.setPath(<span class="string">"/"</span>);</span><br><span class="line">            response.addCookie(cookie);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 得到cookie的域名</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String <span class="title">getDomainName</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">        String domainName = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        String serverName = request.getRequestURL().toString();</span><br><span class="line">        <span class="keyword">if</span> (serverName == <span class="keyword">null</span> || serverName.equals(<span class="string">""</span>)) &#123;</span><br><span class="line">            domainName = <span class="string">""</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            serverName = serverName.toLowerCase();</span><br><span class="line">            serverName = serverName.substring(<span class="number">7</span>);</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> end = serverName.indexOf(<span class="string">"/"</span>);</span><br><span class="line">            serverName = serverName.substring(<span class="number">0</span>, end);</span><br><span class="line">            <span class="keyword">final</span> String[] domains = serverName.split(<span class="string">"\\."</span>);</span><br><span class="line">            <span class="keyword">int</span> len = domains.length;</span><br><span class="line">            <span class="keyword">if</span> (len &gt; <span class="number">3</span>) &#123;</span><br><span class="line">                <span class="comment">// www.xxx.cn</span></span><br><span class="line">                domainName = <span class="string">"."</span> + domains[len - <span class="number">3</span>] + <span class="string">"."</span> + domains[len - <span class="number">2</span>] + <span class="string">"."</span> + domains[len - <span class="number">1</span>];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (len &lt;= <span class="number">3</span> &amp;&amp; len &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">// xxx.com or xxx.cn</span></span><br><span class="line">                domainName = <span class="string">"."</span> + domains[len - <span class="number">2</span>] + <span class="string">"."</span> + domains[len - <span class="number">1</span>];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                domainName = serverName;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (domainName != <span class="keyword">null</span> &amp;&amp; domainName.indexOf(<span class="string">":"</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            String[] ary = domainName.split(<span class="string">"\\:"</span>);</span><br><span class="line">            domainName = ary[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> domainName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="CookieUtils"><a href="#CookieUtils" class="headerlink" title="CookieUtils"></a>CookieUtils</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.http.Cookie;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.UnsupportedEncodingException;</span><br><span class="line"><span class="keyword">import</span> java.net.URLDecoder;</span><br><span class="line"><span class="keyword">import</span> java.net.URLEncoder;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Cookie 工具类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CookieUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 得到Cookie的值, 不编码</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cookieName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getCookieValue</span><span class="params">(HttpServletRequest request, String cookieName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getCookieValue(request, cookieName, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 得到Cookie的值,</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cookieName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getCookieValue</span><span class="params">(HttpServletRequest request, String cookieName, <span class="keyword">boolean</span> isDecoder)</span> </span>&#123;</span><br><span class="line">        Cookie[] cookieList = request.getCookies();</span><br><span class="line">        <span class="keyword">if</span> (cookieList == <span class="keyword">null</span> || cookieName == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String retValue = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cookieList.length; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (cookieList[i].getName().equals(cookieName)) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (isDecoder) &#123;</span><br><span class="line">                        retValue = URLDecoder.decode(cookieList[i].getValue(), <span class="string">"UTF-8"</span>);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        retValue = cookieList[i].getValue();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> retValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 得到Cookie的值,</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cookieName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getCookieValue</span><span class="params">(HttpServletRequest request, String cookieName, String encodeString)</span> </span>&#123;</span><br><span class="line">        Cookie[] cookieList = request.getCookies();</span><br><span class="line">        <span class="keyword">if</span> (cookieList == <span class="keyword">null</span> || cookieName == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String retValue = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cookieList.length; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (cookieList[i].getName().equals(cookieName)) &#123;</span><br><span class="line">                    retValue = URLDecoder.decode(cookieList[i].getValue(), encodeString);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> retValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置Cookie的值 不设置生效时间默认浏览器关闭即失效,也不编码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response, String cookieName,</span></span></span><br><span class="line"><span class="function"><span class="params">                                 String cookieValue)</span> </span>&#123;</span><br><span class="line">        setCookie(request, response, cookieName, cookieValue, -<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置Cookie的值 在指定时间内生效,但不编码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response, String cookieName,</span></span></span><br><span class="line"><span class="function"><span class="params">                                 String cookieValue, <span class="keyword">int</span> cookieMaxage)</span> </span>&#123;</span><br><span class="line">        setCookie(request, response, cookieName, cookieValue, cookieMaxage, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置Cookie的值 不设置生效时间,但编码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response, String cookieName,</span></span></span><br><span class="line"><span class="function"><span class="params">                                 String cookieValue, <span class="keyword">boolean</span> isEncode)</span> </span>&#123;</span><br><span class="line">        setCookie(request, response, cookieName, cookieValue, -<span class="number">1</span>, isEncode);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置Cookie的值 在指定时间内生效, 编码参数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response, String cookieName,</span></span></span><br><span class="line"><span class="function"><span class="params">                                 String cookieValue, <span class="keyword">int</span> cookieMaxage, <span class="keyword">boolean</span> isEncode)</span> </span>&#123;</span><br><span class="line">        doSetCookie(request, response, cookieName, cookieValue, cookieMaxage, isEncode);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置Cookie的值 在指定时间内生效, 编码参数(指定编码)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response, String cookieName,</span></span></span><br><span class="line"><span class="function"><span class="params">                                 String cookieValue, <span class="keyword">int</span> cookieMaxage, String encodeString)</span> </span>&#123;</span><br><span class="line">        doSetCookie(request, response, cookieName, cookieValue, cookieMaxage, encodeString);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 删除Cookie带cookie域名</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">deleteCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    String cookieName)</span> </span>&#123;</span><br><span class="line">        doSetCookie(request, response, cookieName, <span class="string">""</span>, -<span class="number">1</span>, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置Cookie的值，并使其在指定时间内生效</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cookieMaxage cookie生效的最大秒数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">doSetCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">                                          String cookieName, String cookieValue, <span class="keyword">int</span> cookieMaxage, <span class="keyword">boolean</span> isEncode)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (cookieValue == <span class="keyword">null</span>) &#123;</span><br><span class="line">                cookieValue = <span class="string">""</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isEncode) &#123;</span><br><span class="line">                cookieValue = URLEncoder.encode(cookieValue, <span class="string">"utf-8"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            Cookie cookie = <span class="keyword">new</span> Cookie(cookieName, cookieValue);</span><br><span class="line">            <span class="keyword">if</span> (cookieMaxage &gt; <span class="number">0</span>)</span><br><span class="line">                cookie.setMaxAge(cookieMaxage);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> != request) &#123;<span class="comment">// 设置域名的cookie</span></span><br><span class="line">                String domainName = getDomainName(request);</span><br><span class="line"><span class="comment">//                System.out.println(domainName);</span></span><br><span class="line">                <span class="keyword">if</span> (!<span class="string">"localhost"</span>.equals(domainName)) &#123;</span><br><span class="line">                    cookie.setDomain(domainName);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            cookie.setPath(<span class="string">"/"</span>);</span><br><span class="line">            response.addCookie(cookie);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置Cookie的值，并使其在指定时间内生效</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cookieMaxage cookie生效的最大秒数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">doSetCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">                                          String cookieName, String cookieValue, <span class="keyword">int</span> cookieMaxage, String encodeString)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (cookieValue == <span class="keyword">null</span>) &#123;</span><br><span class="line">                cookieValue = <span class="string">""</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cookieValue = URLEncoder.encode(cookieValue, encodeString);</span><br><span class="line">            &#125;</span><br><span class="line">            Cookie cookie = <span class="keyword">new</span> Cookie(cookieName, cookieValue);</span><br><span class="line">            <span class="keyword">if</span> (cookieMaxage &gt; <span class="number">0</span>)</span><br><span class="line">                cookie.setMaxAge(cookieMaxage);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> != request) &#123;<span class="comment">// 设置域名的cookie</span></span><br><span class="line">                String domainName = getDomainName(request);</span><br><span class="line"><span class="comment">//                System.out.println(domainName);</span></span><br><span class="line">                <span class="keyword">if</span> (!<span class="string">"localhost"</span>.equals(domainName)) &#123;</span><br><span class="line">                    cookie.setDomain(domainName);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            cookie.setPath(<span class="string">"/"</span>);</span><br><span class="line">            response.addCookie(cookie);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 得到cookie的域名</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String <span class="title">getDomainName</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">        String domainName = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        String serverName = request.getRequestURL().toString();</span><br><span class="line">        <span class="keyword">if</span> (serverName == <span class="keyword">null</span> || serverName.equals(<span class="string">""</span>)) &#123;</span><br><span class="line">            domainName = <span class="string">""</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            serverName = serverName.toLowerCase();</span><br><span class="line">            serverName = serverName.substring(<span class="number">7</span>);</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> end = serverName.indexOf(<span class="string">"/"</span>);</span><br><span class="line">            serverName = serverName.substring(<span class="number">0</span>, end);</span><br><span class="line">            <span class="keyword">final</span> String[] domains = serverName.split(<span class="string">"\\."</span>);</span><br><span class="line">            <span class="keyword">int</span> len = domains.length;</span><br><span class="line">            <span class="keyword">if</span> (len &gt; <span class="number">3</span>) &#123;</span><br><span class="line">                <span class="comment">// www.xxx.cn</span></span><br><span class="line">                domainName = <span class="string">"."</span> + domains[len - <span class="number">3</span>] + <span class="string">"."</span> + domains[len - <span class="number">2</span>] + <span class="string">"."</span> + domains[len - <span class="number">1</span>];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (len &lt;= <span class="number">3</span> &amp;&amp; len &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">// xxx.com or xxx.cn</span></span><br><span class="line">                domainName = <span class="string">"."</span> + domains[len - <span class="number">2</span>] + <span class="string">"."</span> + domains[len - <span class="number">1</span>];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                domainName = serverName;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (domainName != <span class="keyword">null</span> &amp;&amp; domainName.indexOf(<span class="string">":"</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            String[] ary = domainName.split(<span class="string">"\\:"</span>);</span><br><span class="line">            domainName = ary[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> domainName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="RegexpUtils"><a href="#RegexpUtils" class="headerlink" title="RegexpUtils"></a>RegexpUtils</h2><h3 id="正则表达式工具类"><a href="#正则表达式工具类" class="headerlink" title="正则表达式工具类"></a>正则表达式工具类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 正则表达式工具类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RegexpUtils</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 验证手机号</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PHONE = <span class="string">"^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d&#123;8&#125;$"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 验证邮箱地址</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String EMAIL = <span class="string">"\\w+(\\.\\w)*@\\w+(\\.\\w&#123;2,3&#125;)&#123;1,3&#125;"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 验证手机号</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> phone</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">checkPhone</span><span class="params">(String phone)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> phone.matches(PHONE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 验证邮箱</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> email</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">checkEmail</span><span class="params">(String email)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> email.matches(EMAIL);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Jackson-工具类"><a href="#Jackson-工具类" class="headerlink" title="Jackson 工具类"></a>Jackson 工具类</h2><h3 id="MapperUtils"><a href="#MapperUtils" class="headerlink" title="MapperUtils"></a>MapperUtils</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.annotation.JsonInclude;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.core.type.TypeReference;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.DeserializationFeature;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.JavaType;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.ObjectMapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Jackson 工具类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MapperUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> ObjectMapper objectMapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ObjectMapper <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> objectMapper;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 转换为 JSON 字符串</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> obj</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">obj2json</span><span class="params">(Object obj)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> objectMapper.writeValueAsString(obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 转换为 JSON 字符串，忽略空值</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> obj</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">obj2jsonIgnoreNull</span><span class="params">(Object obj)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span><br><span class="line">        <span class="keyword">return</span> mapper.writeValueAsString(obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 转换为 JavaBean</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> jsonString</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> clazz</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">json2pojo</span><span class="params">(String jsonString, Class&lt;T&gt; clazz)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, <span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">return</span> objectMapper.readValue(jsonString, clazz);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字符串转换为 Map&lt;String, Object&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> jsonString</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Map&lt;String, Object&gt; <span class="title">json2map</span><span class="params">(String jsonString)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span><br><span class="line">        <span class="keyword">return</span> mapper.readValue(jsonString, Map.class);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字符串转换为 Map&lt;String, T&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Map&lt;String, T&gt; <span class="title">json2map</span><span class="params">(String jsonString, Class&lt;T&gt; clazz)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Map&lt;String, Map&lt;String, Object&gt;&gt; map = objectMapper.readValue(jsonString, <span class="keyword">new</span> TypeReference&lt;Map&lt;String, T&gt;&gt;() &#123;</span><br><span class="line">        &#125;);</span><br><span class="line">        Map&lt;String, T&gt; result = <span class="keyword">new</span> HashMap&lt;String, T&gt;();</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;String, Map&lt;String, Object&gt;&gt; entry : map.entrySet()) &#123;</span><br><span class="line">            result.put(entry.getKey(), map2pojo(entry.getValue(), clazz));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 深度转换 JSON 成 Map</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> json</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title">json2mapDeeply</span><span class="params">(String json)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> json2MapRecursion(json, objectMapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 把 JSON 解析成 List，如果 List 内部的元素存在 jsonString，继续解析</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> json</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> mapper 解析工具</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> List&lt;Object&gt; <span class="title">json2ListRecursion</span><span class="params">(String json, ObjectMapper mapper)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (json == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        List&lt;Object&gt; list = mapper.readValue(json, List.class);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Object obj : list) &#123;</span><br><span class="line">            <span class="keyword">if</span> (obj != <span class="keyword">null</span> &amp;&amp; obj <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">                String str = (String) obj;</span><br><span class="line">                <span class="keyword">if</span> (str.startsWith(<span class="string">"["</span>)) &#123;</span><br><span class="line">                    obj = json2ListRecursion(str, mapper);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj.toString().startsWith(<span class="string">"&#123;"</span>)) &#123;</span><br><span class="line">                    obj = json2MapRecursion(str, mapper);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 把 JSON 解析成 Map，如果 Map 内部的 Value 存在 jsonString，继续解析</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> json</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> mapper</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title">json2MapRecursion</span><span class="params">(String json, ObjectMapper mapper)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (json == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Map&lt;String, Object&gt; map = mapper.readValue(json, Map.class);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;String, Object&gt; entry : map.entrySet()) &#123;</span><br><span class="line">            Object obj = entry.getValue();</span><br><span class="line">            <span class="keyword">if</span> (obj != <span class="keyword">null</span> &amp;&amp; obj <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">                String str = ((String) obj);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (str.startsWith(<span class="string">"["</span>)) &#123;</span><br><span class="line">                    List&lt;?&gt; list = json2ListRecursion(str, mapper);</span><br><span class="line">                    map.put(entry.getKey(), list);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.startsWith(<span class="string">"&#123;"</span>)) &#123;</span><br><span class="line">                    Map&lt;String, Object&gt; mapRecursion = json2MapRecursion(str, mapper);</span><br><span class="line">                    map.put(entry.getKey(), mapRecursion);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将 JSON 数组转换为集合</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> jsonArrayStr</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> clazz</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">List&lt;T&gt; <span class="title">json2list</span><span class="params">(String jsonArrayStr, Class&lt;T&gt; clazz)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        JavaType javaType = getCollectionType(ArrayList.class, clazz);</span><br><span class="line">        List&lt;T&gt; list = (List&lt;T&gt;) objectMapper.readValue(jsonArrayStr, javaType);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取泛型的 Collection Type</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> collectionClass 泛型的Collection</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> elementClasses  元素类</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> JavaType Java类型</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@since</span> 1.0</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> JavaType <span class="title">getCollectionType</span><span class="params">(Class&lt;?&gt; collectionClass, Class&lt;?&gt;... elementClasses)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> objectMapper.getTypeFactory().constructParametricType(collectionClass, elementClasses);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将 Map 转换为 JavaBean</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> map</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> clazz</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">map2pojo</span><span class="params">(Map map, Class&lt;T&gt; clazz)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> objectMapper.convertValue(map, clazz);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将 Map 转换为 JSON</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> map</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">mapToJson</span><span class="params">(Map map)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> objectMapper.writeValueAsString(map);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将 JSON 对象转换为 JavaBean</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> obj</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> clazz</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">obj2pojo</span><span class="params">(Object obj, Class&lt;T&gt; clazz)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> objectMapper.convertValue(obj, clazz);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="日期工具类"><a href="#日期工具类" class="headerlink" title="日期工具类"></a>日期工具类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 日期时间工具类</span></span><br><span class="line"><span class="comment"> * @type &#123;&#123;dateFormat&#125;&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> DateTime = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> patterns = &#123;</span><br><span class="line">        PATTERN_ERA: <span class="string">'G'</span>, <span class="comment">// Era 标志符 Era strings. For example: "AD" and "BC"</span></span><br><span class="line">        PATTERN_YEAR: <span class="string">'y'</span>, <span class="comment">// 年</span></span><br><span class="line">        PATTERN_MONTH: <span class="string">'M'</span>, <span class="comment">// 月份</span></span><br><span class="line">        PATTERN_DAY_OF_MONTH: <span class="string">'d'</span>, <span class="comment">// 月份的天数</span></span><br><span class="line">        PATTERN_HOUR_OF_DAY1: <span class="string">'k'</span>, <span class="comment">// 一天中的小时数（1-24）</span></span><br><span class="line">        PATTERN_HOUR_OF_DAY0: <span class="string">'H'</span>, <span class="comment">// 24 小时制，一天中的小时数（0-23）</span></span><br><span class="line">        PATTERN_MINUTE: <span class="string">'m'</span>, <span class="comment">// 小时中的分钟数</span></span><br><span class="line">        PATTERN_SECOND: <span class="string">'s'</span>, <span class="comment">// 秒</span></span><br><span class="line">        PATTERN_MILLISECOND: <span class="string">'S'</span>, <span class="comment">// 毫秒</span></span><br><span class="line">        PATTERN_DAY_OF_WEEK: <span class="string">'E'</span>, <span class="comment">// 一周中对应的星期，如星期一，周一</span></span><br><span class="line">        PATTERN_DAY_OF_YEAR: <span class="string">'D'</span>, <span class="comment">// 一年中的第几天</span></span><br><span class="line">        PATTERN_DAY_OF_WEEK_IN_MONTH: <span class="string">'F'</span>, <span class="comment">// 一月中的第几个星期(会把这个月总共过的天数除以7,不够准确，推荐用W)</span></span><br><span class="line">        PATTERN_WEEK_OF_YEAR: <span class="string">'w'</span>, <span class="comment">// 一年中的第几个星期</span></span><br><span class="line">        PATTERN_WEEK_OF_MONTH: <span class="string">'W'</span>, <span class="comment">// 一月中的第几星期(会根据实际情况来算)</span></span><br><span class="line">        PATTERN_AM_PM: <span class="string">'a'</span>, <span class="comment">// 上下午标识</span></span><br><span class="line">        PATTERN_HOUR1: <span class="string">'h'</span>, <span class="comment">// 12 小时制 ，am/pm 中的小时数（1-12）</span></span><br><span class="line">        PATTERN_HOUR0: <span class="string">'K'</span>, <span class="comment">// 和 h 类型</span></span><br><span class="line">        PATTERN_ZONE_NAME: <span class="string">'z'</span>, <span class="comment">// 时区名</span></span><br><span class="line">        PATTERN_ZONE_VALUE: <span class="string">'Z'</span>, <span class="comment">// 时区值</span></span><br><span class="line">        PATTERN_WEEK_YEAR: <span class="string">'Y'</span>, <span class="comment">// 和 y 类型</span></span><br><span class="line">        PATTERN_ISO_DAY_OF_WEEK: <span class="string">'u'</span>,</span><br><span class="line">        PATTERN_ISO_ZONE: <span class="string">'X'</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> week = &#123;</span><br><span class="line">        <span class="string">'ch'</span>: &#123;</span><br><span class="line">            <span class="string">"0"</span>: <span class="string">"\u65e5"</span>,</span><br><span class="line">            <span class="string">"1"</span>: <span class="string">"\u4e00"</span>,</span><br><span class="line">            <span class="string">"2"</span>: <span class="string">"\u4e8c"</span>,</span><br><span class="line">            <span class="string">"3"</span>: <span class="string">"\u4e09"</span>,</span><br><span class="line">            <span class="string">"4"</span>: <span class="string">"\u56db"</span>,</span><br><span class="line">            <span class="string">"5"</span>: <span class="string">"\u4e94"</span>,</span><br><span class="line">            <span class="string">"6"</span>: <span class="string">"\u516d"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'en'</span>: &#123;</span><br><span class="line">            <span class="string">"0"</span>: <span class="string">"Sunday"</span>,</span><br><span class="line">            <span class="string">"1"</span>: <span class="string">"Monday"</span>,</span><br><span class="line">            <span class="string">"2"</span>: <span class="string">"Tuesday"</span>,</span><br><span class="line">            <span class="string">"3"</span>: <span class="string">"Wednesday"</span>,</span><br><span class="line">            <span class="string">"4"</span>: <span class="string">"Thursday"</span>,</span><br><span class="line">            <span class="string">"5"</span>: <span class="string">"Friday"</span>,</span><br><span class="line">            <span class="string">"6"</span>: <span class="string">"Saturday"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取当前时间</span></span><br><span class="line"><span class="comment">     * @returns &#123;string&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">var</span> handlerGetCurrentTime = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> today = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">        <span class="keyword">var</span> year = today.getFullYear();</span><br><span class="line">        <span class="keyword">var</span> month = today.getMonth() + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">var</span> day = today.getDate();</span><br><span class="line">        <span class="keyword">var</span> hours = today.getHours();</span><br><span class="line">        <span class="keyword">var</span> minutes = today.getMinutes();</span><br><span class="line">        <span class="keyword">var</span> seconds = today.getSeconds();</span><br><span class="line">        <span class="keyword">var</span> timeString = year + <span class="string">"-"</span> + month + <span class="string">"-"</span> + day + <span class="string">" "</span> + hours + <span class="string">":"</span> + minutes + <span class="string">":"</span> + seconds;</span><br><span class="line">        <span class="keyword">return</span> timeString;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 比较时间大小</span></span><br><span class="line"><span class="comment">     * time1 &gt; time2 return 1</span></span><br><span class="line"><span class="comment">     * time1 &lt; time2 return -1</span></span><br><span class="line"><span class="comment">     * time1 == time2 return 0</span></span><br><span class="line"><span class="comment">     * @param time1</span></span><br><span class="line"><span class="comment">     * @param time2</span></span><br><span class="line"><span class="comment">     * @returns &#123;number&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">var</span> handlerCompareTime = <span class="function"><span class="keyword">function</span> (<span class="params">time1, time2</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">Date</span>.parse(time1.replace(<span class="regexp">/-/g</span>, <span class="string">"/"</span>)) &gt; <span class="built_in">Date</span>.parse(time2.replace(<span class="regexp">/-/g</span>, <span class="string">"/"</span>))) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">Date</span>.parse(time1.replace(<span class="regexp">/-/g</span>, <span class="string">"/"</span>)) &lt; <span class="built_in">Date</span>.parse(time2.replace(<span class="regexp">/-/g</span>, <span class="string">"/"</span>))) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">Date</span>.parse(time1.replace(<span class="regexp">/-/g</span>, <span class="string">"/"</span>)) == <span class="built_in">Date</span>.parse(time2.replace(<span class="regexp">/-/g</span>, <span class="string">"/"</span>))) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 是否闰年</span></span><br><span class="line"><span class="comment">     * @param year</span></span><br><span class="line"><span class="comment">     * @returns &#123;boolean&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">var</span> handlerIsLeapYear = <span class="function"><span class="keyword">function</span> (<span class="params">year</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ((year % <span class="number">4</span> === <span class="number">0</span> &amp;&amp; year % <span class="number">100</span> !== <span class="number">0</span>) || year % <span class="number">400</span> === <span class="number">0</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取某个月的天数，从 0 开始</span></span><br><span class="line"><span class="comment">     * @param year</span></span><br><span class="line"><span class="comment">     * @param month</span></span><br><span class="line"><span class="comment">     * @returns &#123;*&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">var</span> handlerGetDaysOfMonth = <span class="function"><span class="keyword">function</span> (<span class="params">year, month</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [<span class="number">31</span>, (<span class="keyword">this</span>.isLeapYear(year) ? <span class="number">29</span> : <span class="number">28</span>), <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>][month];</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取某个月的天数，从 0 开始</span></span><br><span class="line"><span class="comment">     * @param year</span></span><br><span class="line"><span class="comment">     * @param month</span></span><br><span class="line"><span class="comment">     * @returns &#123;number&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">var</span> handlerGetDaysOfMonth2 = <span class="function"><span class="keyword">function</span> (<span class="params">year, month</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 将天置为 0，会获取其上个月的最后一天</span></span><br><span class="line">        month = <span class="built_in">parseInt</span>(month) + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(year, month, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> date.getDate();</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 距离现在几天的日期：负数表示今天之前的日期，0 表示今天，整数表示未来的日期</span></span><br><span class="line"><span class="comment">     * 如 -1 表示昨天的日期，0 表示今天，2 表示后天</span></span><br><span class="line"><span class="comment">     * @param days</span></span><br><span class="line"><span class="comment">     * @returns &#123;string&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">var</span> handlerFromToday = <span class="function"><span class="keyword">function</span> (<span class="params">days</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> today = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">        today.setDate(today.getDate() + days);</span><br><span class="line">        <span class="keyword">var</span> date = today.getFullYear() + <span class="string">"-"</span> + (today.getMonth() + <span class="number">1</span>) + <span class="string">"-"</span> + today.getDate();</span><br><span class="line">        <span class="keyword">return</span> date;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 格式化日期时间</span></span><br><span class="line"><span class="comment">     * @param dateTime 需要格式化的日期时间</span></span><br><span class="line"><span class="comment">     * @param pattern 格式化的模式，如 yyyy-MM-dd hh(HH):mm:ss.S a k K E D F w W z Z</span></span><br><span class="line"><span class="comment">     * @returns &#123;*&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">var</span> handlerFormat = <span class="function"><span class="keyword">function</span> (<span class="params">dateTime, pattern</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(dateTime);</span><br><span class="line">        <span class="keyword">if</span> (pattern == <span class="literal">null</span> || pattern.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> date.toLocaleString();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pattern.replace(<span class="regexp">/([a-z])\1*/ig</span>, <span class="function"><span class="keyword">function</span> (<span class="params">matchStr, group1</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> replacement = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">switch</span> (group1) &#123;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_ERA: <span class="comment">//G</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_WEEK_YEAR: <span class="comment">//Y</span></span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_YEAR: <span class="comment">//y</span></span><br><span class="line">                    replacement = date.getFullYear();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_MONTH: <span class="comment">//M</span></span><br><span class="line">                    <span class="keyword">var</span> month = date.getMonth() + <span class="number">1</span>;</span><br><span class="line">                    replacement = (month &lt; <span class="number">10</span> &amp;&amp; matchStr.length &gt;= <span class="number">2</span>) ? <span class="string">"0"</span> + month : month;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_DAY_OF_MONTH: <span class="comment">//d</span></span><br><span class="line">                    <span class="keyword">var</span> days = date.getDate();</span><br><span class="line">                    replacement = (days &lt; <span class="number">10</span> &amp;&amp; matchStr.length &gt;= <span class="number">2</span>) ? <span class="string">"0"</span> + days : days;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_HOUR_OF_DAY1: <span class="comment">//k(1~24)</span></span><br><span class="line">                    <span class="keyword">var</span> hours24 = date.getHours();</span><br><span class="line">                    replacement = hours24;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_HOUR_OF_DAY0: <span class="comment">//H(0~23)</span></span><br><span class="line">                    <span class="keyword">var</span> hours24 = date.getHours();</span><br><span class="line">                    replacement = (hours24 &lt; <span class="number">10</span> &amp;&amp; matchStr.length &gt;= <span class="number">2</span>) ? <span class="string">"0"</span> + hours24 : hours24;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_MINUTE: <span class="comment">//m</span></span><br><span class="line">                    <span class="keyword">var</span> minutes = date.getMinutes();</span><br><span class="line">                    replacement = (minutes &lt; <span class="number">10</span> &amp;&amp; matchStr.length &gt;= <span class="number">2</span>) ? <span class="string">"0"</span> + minutes : minutes;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_SECOND: <span class="comment">//s</span></span><br><span class="line">                    <span class="keyword">var</span> seconds = date.getSeconds();</span><br><span class="line">                    replacement = (seconds &lt; <span class="number">10</span> &amp;&amp; matchStr.length &gt;= <span class="number">2</span>) ? <span class="string">"0"</span> + seconds : seconds;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_MILLISECOND: <span class="comment">//S</span></span><br><span class="line">                    <span class="keyword">var</span> milliSeconds = date.getMilliseconds();</span><br><span class="line">                    replacement = milliSeconds;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_DAY_OF_WEEK: <span class="comment">//E</span></span><br><span class="line">                    <span class="keyword">var</span> day = date.getDay();</span><br><span class="line">                    replacement = week[<span class="string">'ch'</span>][day];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_DAY_OF_YEAR: <span class="comment">//D</span></span><br><span class="line">                    replacement = dayOfTheYear(date);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_DAY_OF_WEEK_IN_MONTH: <span class="comment">//F</span></span><br><span class="line">                    <span class="keyword">var</span> days = date.getDate();</span><br><span class="line">                    replacement = <span class="built_in">Math</span>.floor(days / <span class="number">7</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_WEEK_OF_YEAR: <span class="comment">//w</span></span><br><span class="line">                    <span class="keyword">var</span> days = dayOfTheYear(date);</span><br><span class="line">                    replacement = <span class="built_in">Math</span>.ceil(days / <span class="number">7</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_WEEK_OF_MONTH: <span class="comment">//W</span></span><br><span class="line">                    <span class="keyword">var</span> days = date.getDate();</span><br><span class="line">                    replacement = <span class="built_in">Math</span>.ceil(days / <span class="number">7</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_AM_PM: <span class="comment">//a</span></span><br><span class="line">                    <span class="keyword">var</span> hours24 = date.getHours();</span><br><span class="line">                    replacement = hours24 &lt; <span class="number">12</span> ? <span class="string">"\u4e0a\u5348"</span> : <span class="string">"\u4e0b\u5348"</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_HOUR1: <span class="comment">//h(1~12)</span></span><br><span class="line">                    <span class="keyword">var</span> hours12 = date.getHours() % <span class="number">12</span> || <span class="number">12</span>; <span class="comment">//0转为12</span></span><br><span class="line">                    replacement = (hours12 &lt; <span class="number">10</span> &amp;&amp; matchStr.length &gt;= <span class="number">2</span>) ? <span class="string">"0"</span> + hours12 : hours12;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_HOUR0: <span class="comment">//K(0~11)</span></span><br><span class="line">                    <span class="keyword">var</span> hours12 = date.getHours() % <span class="number">12</span>;</span><br><span class="line">                    replacement = hours12;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_ZONE_NAME: <span class="comment">//z</span></span><br><span class="line">                    replacement = handlerGetZoneNameValue(date)[<span class="string">'name'</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_ZONE_VALUE: <span class="comment">//Z</span></span><br><span class="line">                    replacement = handlerGetZoneNameValue(date)[<span class="string">'value'</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_ISO_DAY_OF_WEEK: <span class="comment">//u</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> patterns.PATTERN_ISO_ZONE: <span class="comment">//X</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> replacement;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 计算一个日期是当年的第几天</span></span><br><span class="line"><span class="comment">     * @param date</span></span><br><span class="line"><span class="comment">     * @returns &#123;number&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">var</span> handlerDayOfTheYear = <span class="function"><span class="keyword">function</span> (<span class="params">date</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Date</span>(date);</span><br><span class="line">        <span class="keyword">var</span> year = obj.getFullYear();</span><br><span class="line">        <span class="keyword">var</span> month = obj.getMonth(); <span class="comment">//从0开始</span></span><br><span class="line">        <span class="keyword">var</span> days = obj.getDate();</span><br><span class="line">        <span class="keyword">var</span> daysArr = [<span class="number">31</span>, (<span class="keyword">this</span>.isLeapYear(year) ? <span class="number">29</span> : <span class="number">28</span>), <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; month; i++) &#123;</span><br><span class="line">            days += daysArr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> days;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获得时区名和值</span></span><br><span class="line"><span class="comment">     * @param dateObj</span></span><br><span class="line"><span class="comment">     * @returns &#123;&#123;name: string, value: string&#125;&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">var</span> handlerGetZoneNameValue = <span class="function"><span class="keyword">function</span> (<span class="params">dateObj</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(dateObj);</span><br><span class="line">        date = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.UTC(date.getFullYear(), date.getMonth(), date.getDate()));</span><br><span class="line">        <span class="keyword">var</span> arr = date.toString().match(<span class="regexp">/([A-Z]+)([-+]\d+:?\d+)/</span>);</span><br><span class="line">        <span class="keyword">var</span> obj = &#123;</span><br><span class="line">            <span class="string">'name'</span>: arr[<span class="number">1</span>],</span><br><span class="line">            <span class="string">'value'</span>: arr[<span class="number">2</span>]</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        getCurrentTime: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> handlerGetCurrentTime();</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        compareTime: <span class="function"><span class="keyword">function</span> (<span class="params">time1, time2</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> handlerCompareTime(time1, time2);</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        isLeapYear: <span class="function"><span class="keyword">function</span> (<span class="params">year</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> handlerIsLeapYear(year);</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        getDaysOfMonth: <span class="function"><span class="keyword">function</span> (<span class="params">year, month</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> handlerGetDaysOfMonth(year, month);</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        getDaysOfMonth2: <span class="function"><span class="keyword">function</span> (<span class="params">year, month</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> handlerGetDaysOfMonth2(year, month);</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        fromToday: <span class="function"><span class="keyword">function</span> (<span class="params">days</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> handlerFromToday(days);</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        format: <span class="function"><span class="keyword">function</span> (<span class="params">dateTime, pattern</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> handlerFormat(dateTime, pattern);</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        dayOfTheYear: <span class="function"><span class="keyword">function</span> (<span class="params">date</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> handlerDayOfTheYear(date);</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        getZoneNameValue: <span class="function"><span class="keyword">function</span> (<span class="params">dateObj</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> handlerGetZoneNameValue(dateObj);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
 
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src="http://link.hhtjim.com/163/557581284.mp3">
-            </audio>
+      
+    </div>
+    
+    
+    
+
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/06/19/ToolsClass/">常用工具类</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 mirrorming 的个人博客">mirrorming</a></p>
+  <p><span>发布时间:</span>2018年06月19日 - 22:06</p>
+  <p><span>最后更新:</span>2018年12月06日 - 13:12</p>
+  <p><span>原始链接:</span><a href="/2018/06/19/ToolsClass/" title="常用工具类">https://mirrormingzZ.github.io/2018/06/19/ToolsClass/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://mirrormingzZ.github.io/2018/06/19/ToolsClass/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixinpay.png" alt="mirrorming 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="mirrorming 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/06/12/Git使用/" rel="next" title="Git使用">
+                <i class="fa fa-chevron-left"></i> Git使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/11/手写Mybatis/" rel="prev" title="手写MyBatis">
+                手写MyBatis <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+  
+  
+
         </div>
         
-    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="f8c57217c4b14cacd60b" data-cs="d6a7b3737623d9eddd2d11f29c86bb25c5ffe142" data-r="mirrormingzZ.github.io" data-o="mirrormingzZ" data-a="mirrormingzZ" data-d="false">查看评论</div>
-
-
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
     
-        <div class="side">
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CookieUtils"><span class="toc-number">1.</span> <span class="toc-text">CookieUtils</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RegexpUtils"><span class="toc-number">2.</span> <span class="toc-text">RegexpUtils</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#正则表达式工具类"><span class="toc-number">2.1.</span> <span class="toc-text">正则表达式工具类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jackson-工具类"><span class="toc-number">3.</span> <span class="toc-text">Jackson 工具类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MapperUtils"><span class="toc-number">3.1.</span> <span class="toc-text">MapperUtils</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日期工具类"><span class="toc-number">4.</span> <span class="toc-text">日期工具类</span></a></li></ol>
-        </div>
+      <div id="sidebar-dimmer"></div>
     
-</div>
+    <div class="sidebar-inner">
 
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="mirrorming">
+            
+              <p class="site-author-name" itemprop="name">mirrorming</p>
+              <p class="site-description motion-element" itemprop="description">听过很多的道理,依然过不好这一生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/53371355/" target="_blank" title="mirror_Bilibili">
+                      
+                        <i class="fa fa-fw fa-globe"></i>mirror_Bilibili</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/mirrormingzZ" target="_blank" title="mirror_Github">
+                      
+                        <i class="fa fa-fw fa-globe"></i>mirror_Github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://mobile.twitter.com/1060996414Com" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/mirrormingzZ" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.google.com/" title="Google" target="_blank">Google</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://stackoverflow.com/" title="StackOverflow" target="_blank">StackOverflow</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/" title="LeetCode" target="_blank">LeetCode</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.nowcoder.com/" title="牛客网" target="_blank">牛客网</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.chuangzaoshi.com/code" title="创造狮导航" target="_blank">创造狮导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://e.xitu.io/" title="掘金酱" target="_blank">掘金酱</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.v2ex.com/" title="V2EX" target="_blank">V2EX</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.v2ex.com/" title="印记中文" target="_blank">印记中文</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank">Web前端导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank">前端书籍资料</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CookieUtils"><span class="nav-number">1.</span> <span class="nav-text">CookieUtils</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RegexpUtils"><span class="nav-number">2.</span> <span class="nav-text">RegexpUtils</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式工具类"><span class="nav-number">2.1.</span> <span class="nav-text">正则表达式工具类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jackson-工具类"><span class="nav-number">3.</span> <span class="nav-text">Jackson 工具类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MapperUtils"><span class="nav-number">3.1.</span> <span class="nav-text">MapperUtils</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期工具类"><span class="nav-number">4.</span> <span class="nav-text">日期工具类</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
 
     </div>
-</div>
-</body>
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
-<script src="/js/plugin.js"></script>
-<script src="/js/diaspora.js"></script>
-<link rel="stylesheet" href="/photoswipe/photoswipe.css">
-<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
-<script src="/photoswipe/photoswipe.min.js"></script>
-<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+  </aside>
 
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!--  Controls are self-explanatory. Order can be changed. -->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-        </div>
-    </div>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mirrorming</span>
+
+  
 </div>
 
 
 
 
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共72.7k字</span>
+</div>
+<span>|</span>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span>|</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+<script type="text/javascript" color="243,243,243" opacity="0.9" zindex="-2" count="100" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
